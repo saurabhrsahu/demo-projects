@@ -7,7 +7,7 @@ const serviceName = process.env.SERVICE_NAME || "node-microservice";
 app.get("/", (req, res) => {
   res.json({
     service: serviceName,
-    message: "Hello from the Node microservice",
+    message: "Hello from the Node microservice v2",
   });
 });
 
