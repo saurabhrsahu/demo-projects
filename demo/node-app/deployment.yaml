@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-node
+  namespace: demo
+  labels:
+    app: demo-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-node
+  template:
+    metadata:
+      labels:
+        app: demo-node
+    spec:
+      containers:
+      - name: demo-node
+        image: saurabhrsahu/demo-apps:node
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
