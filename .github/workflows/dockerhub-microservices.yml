@@ -35,8 +35,8 @@ jobs:
           context: ./node-microservice
           push: true
           tags: |
-            ${{ env.DOCKERHUB_USERNAME }}/node-microservice:latest
-            ${{ env.DOCKERHUB_USERNAME }}/node-microservice:${{ github.sha }}
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:node
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:node-${{ github.sha }}
 
       - name: Build and push Python microservice image
         uses: docker/build-push-action@v5
@@ -44,6 +44,6 @@ jobs:
           context: ./python-microservice
           push: true
           tags: |
-            ${{ env.DOCKERHUB_USERNAME }}/python-microservice:latest
-            ${{ env.DOCKERHUB_USERNAME }}/python-microservice:${{ github.sha }}
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python-${{ github.sha }}
 
