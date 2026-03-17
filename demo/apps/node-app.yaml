@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/saurabhrsahu/demo-projects.git
     targetRevision: HEAD
-    path: node-microservice
+    path: demo/node-app
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
