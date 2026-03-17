@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/microshare/argo.git
+    repoURL: https://github.com/saurabhrsahu/demo-projects.git
     targetRevision: HEAD
-    path: demo/python-app
+    path: python-microservice
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
