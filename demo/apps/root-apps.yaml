@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-python
+  name: demo-apps-root
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/saurabhrsahu/demo-projects.git
     targetRevision: HEAD
-    path: demo/python-app
+    path: demo/apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
