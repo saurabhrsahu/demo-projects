@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-game
+  namespace: demo
+  labels:
+    app: demo-game
+spec:
+  selector:
+    app: demo-game
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+
