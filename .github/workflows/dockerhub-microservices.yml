@@ -47,3 +47,12 @@ jobs:
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python-${{ github.sha }}
 
+      - name: Build and push Web game image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./web-game
+          push: true
+          tags: |
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:game
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:game-${{ github.sha }}
+

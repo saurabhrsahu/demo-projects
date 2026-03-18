@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  color: #eaf1ff;
+  background: radial-gradient(1200px 700px at 10% 10%, #1a2a4a 0%, #0b1020 55%, #070a12 100%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.title .name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.title .subtitle {
+  font-size: 13px;
+  color: rgba(234, 241, 255, 0.72);
+  margin-top: 3px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(234, 241, 255, 0.92);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  padding: 18px 22px 12px;
+}
+
+@media (max-width: 980px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stats {
+  display: grid;
+  gap: 10px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background: rgba(7, 10, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.label {
+  color: rgba(234, 241, 255, 0.7);
+  font-size: 13px;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn {
+  flex: 1;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.12);
+  color: #eaf1ff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 650;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn.secondary {
+  background: rgba(7, 10, 18, 0.55);
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.hint {
+  color: rgba(234, 241, 255, 0.7);
+  font-size: 12px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px 20px;
+  color: rgba(234, 241, 255, 0.7);
+  font-size: 12px;
+}
+
+.footer a {
+  color: rgba(234, 241, 255, 0.9);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(234, 241, 255, 0.4);
+}
+
+.footer a:hover {
+  border-bottom-color: rgba(234, 241, 255, 0.9);
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  color: rgba(234, 241, 255, 0.92);
+}
+

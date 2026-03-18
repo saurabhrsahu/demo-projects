@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-game
+  namespace: demo
+  labels:
+    app: demo-game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-game
+  template:
+    metadata:
+      labels:
+        app: demo-game
+    spec:
+      containers:
+      - name: demo-game
+        image: saurabhrsahu/demo-apps:game
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 5
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 2
+        resources:
+          requests:
+            cpu: 25m
+            memory: 32Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+
