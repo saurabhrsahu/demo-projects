@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app-beta
+  name: app-beta
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-beta
+  template:
+    metadata:
+      labels:
+        app: app-beta
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80

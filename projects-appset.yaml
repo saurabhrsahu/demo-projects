@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: simple-apps-set
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/saurabhrsahu/demo-projects.git
+      revision: HEAD
+      directories:
+      - path: '*'
+      - path: 'projects-appset.yaml'
+        exclude: true
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/saurabhrsahu/demo-projects.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
