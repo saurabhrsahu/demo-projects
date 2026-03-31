@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-go-app
+  namespace: demo
+  labels:
+    app: demo-go-app
+spec:
+  selector:
+    app: demo-go-app
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP

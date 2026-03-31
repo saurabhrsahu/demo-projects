@@ -65,3 +65,12 @@ jobs:
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:weather
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:weather-${{ github.sha }}
 
+      - name: Build and push Go greet image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./go-greet
+          push: true
+          tags: |
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:go
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:go-${{ github.sha }}
+
