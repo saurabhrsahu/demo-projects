@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-scala-weather
+  namespace: demo
+  labels:
+    app: demo-scala-weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-scala-weather
+  template:
+    metadata:
+      labels:
+        app: demo-scala-weather
+    spec:
+      containers:
+      - name: demo-scala-weather
+        image: saurabhrsahu/demo-apps:weather
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 2
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi

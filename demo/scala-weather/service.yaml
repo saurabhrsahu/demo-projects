@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-scala-weather
+  namespace: demo
+  labels:
+    app: demo-scala-weather
+spec:
+  selector:
+    app: demo-scala-weather
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP

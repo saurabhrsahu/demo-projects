@@ -1,0 +1,16 @@
+# sbt
+target/
+project/target/
+project/project/
+
+# Metals / BSP / Bloop (VS Code / Cursor)
+.metals/
+.bsp/
+.bloop/
+
+# sbt-generated if present
+*.class
+
+# JVM crashes / noisy logs
+hs_err_pid*
+replay_pid*

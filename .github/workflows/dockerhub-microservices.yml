@@ -56,3 +56,12 @@ jobs:
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:game
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:game-${{ github.sha }}
 
+      - name: Build and push Scala weather image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./scala-weather
+          push: true
+          tags: |
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:weather
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:weather-${{ github.sha }}
+
