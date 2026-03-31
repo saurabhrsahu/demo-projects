@@ -1,3 +1,5 @@
+# Copy to root-apps.yaml (see .gitignore) and apply once:
+#   kubectl apply -f demo/apps/root-apps.yaml -n argocd
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

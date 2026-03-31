@@ -1,10 +1,11 @@
-# Discovers folders matching app-* (e.g. app-alpha, app-beta). Each becomes one Application
-# with name = folder basename and source.path = that folder.
-# Requires the Argo CD ApplicationSet controller.
+# ApplicationSet: one Argo CD Application per folder under demo/ (except demo/apps bootstrap).
+# Parameters come from the git directory generator:
+#   path          e.g. demo/node-app
+#   path.basename e.g. node-app
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: simple-apps-set
+  name: demo-workloads
   namespace: argocd
 spec:
   generators:
@@ -12,19 +13,21 @@ spec:
       repoURL: https://github.com/saurabhrsahu/demo-projects.git
       revision: HEAD
       directories:
-      - path: app-*
+      - path: demo/*
+      - path: demo/apps
+        exclude: true
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: demo-{{path.basename}}
     spec:
       project: default
       source:
         repoURL: https://github.com/saurabhrsahu/demo-projects.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: "{{path}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: simple-app
+        namespace: demo
       syncPolicy:
         automated:
           prune: true

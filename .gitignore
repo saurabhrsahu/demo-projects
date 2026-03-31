@@ -1,2 +1,10 @@
 guestbook/
 sample-server/
+
+# Local-only Argo bootstrap: copy from demo/apps/root-apps.yaml.example
+demo/apps/root-apps.yaml
+
+# Scala / Metals when the repo root is the IDE workspace
+.metals/
+.bloop/
+.bsp/
