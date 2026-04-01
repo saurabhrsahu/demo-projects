@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-hello
+  labels:
+    app: python-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-hello
+  template:
+    metadata:
+      labels:
+        app: python-hello
+    spec:
+      containers:
+      - name: python-hello
+        image: python:3.9-slim
+        command: ["python", "-c"]
+        args:
+        - |
+          from http.server import HTTPServer, BaseHTTPRequestHandler
+          class S(BaseHTTPRequestHandler):
+              def do_GET(self):
+                  self.send_response(200)
+                  self.send_header('Content-type', 'text/html')
+                  self.end_headers()
+                  self.wfile.write(b"<h1>Hello World from Python! \xf0\x9f\x90\x8d</h1>")
+          HTTPServer(('0.0.0.0', 8000), S).serve_forever()
+        ports:
+        - containerPort: 8000

@@ -74,3 +74,13 @@ jobs:
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:go
             ${{ env.DOCKERHUB_USERNAME }}/demo-apps:go-${{ github.sha }}
 
+
+      - name: Build and push Python hello image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./python-hello
+          push: true
+          tags: |
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python-hello
+            ${{ env.DOCKERHUB_USERNAME }}/demo-apps:python-hello-${{ github.sha }}
+
